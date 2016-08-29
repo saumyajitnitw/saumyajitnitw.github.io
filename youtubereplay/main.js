@@ -12,7 +12,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
         player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId: 'mnsznLWSYJs',
+          videoId: 'kw4tT7SCmaY',
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -23,9 +23,11 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
         $('#load').click(function(){
-          player.loadVideoById($('#id').val());
-          event.target.playVideo();
-        
+          // player.loadVideoById($('#id').val());
+          // event.target.playVideo();
+          player.cuePlaylist({listType:"search",
+                              list:$('#id').val()
+                            })
         })
           
       
@@ -48,7 +50,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
         //   //done = true;
         // }
         if(event.data === 0) {          
-          player.playVideo();
+          player.previousVideo();
         }
       }
       // function stopVideo() {
